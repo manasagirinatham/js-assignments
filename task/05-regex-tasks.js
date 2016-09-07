@@ -31,8 +31,13 @@
  * @return {RegExp}
  */
 function getRegexForGuid() {
-   throw new Error('Not implemented');
+    return /^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{12}(\}){0,1}$/
 }
+    // /^\{?[0-9a-fA-F]{8}-([0-9a-fA-F]{4}){3}-[0-9a-fA-F]{12}‌​\}?$/
+    // /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/
+     // /^(\{){0,1}[0-9a-fA-F]{8}\-[0-9a-fA-F]{4}\-[0-9a-fA-F]{4}\-[0‌​-9a-fA-F]{4}\-[0-9a-‌​fA-F]{12}(\}){0,1}$;
+    // return /^[A-Za-z0-9] (8)-\[A-Za-z0-9] (4)-\[A-Za-z0-9] (4)-\[A-Za-z0-9] (4)-\[A-Za-z0-9] (12)-\ $/;
+
 
 
 /**
@@ -53,7 +58,8 @@ function getRegexForGuid() {
  *
  */
 function getRegexForPitSpot() {
-   throw new Error('Not implemented');
+  return/p[oi]t|[^t]$/;
+    // return /[it]$ | ^[rs]/
 }
 
 
@@ -72,9 +78,10 @@ function getRegexForPitSpot() {
  * @return {RegExp}
  */
 function getRegexForIPv4() {
-   throw new Error('Not implemented');
+     return  /^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/
 }
 
+  //   /^([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])\\.([01]?[0-9]?[0-9]|2[0-4][0-9]|25[0-5])$/
 
 /**
  * Returns the regexp that matches all SSN (Social Security Number) codes in
@@ -91,9 +98,20 @@ function getRegexForIPv4() {
  * @return {RegExp}
  */
 function getRegexForSSN() {
-   throw new Error('Not implemented');
+   return /^(?!(000))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$|^(?!(000))$/
 }
 
+        // /^[0-9]{3}\-?[0-9]{2}\-?[0-9]{4}$/;
+       // /^[0-9](3)\-{1}[0-9](2)\-{1}[0-9](4)$/
+    //(?!(000|666|9))\d{3}-(?!00)\d{2}-(?!0000)\d{4}$|^(?!(000|66‌​6|9))
+    //(^[^-]{3}-?[^-]{3}-?[^-]{4}$);
+    //   return "$_\n" if /^[^-]{3}-?[^-]{3}-?[^-]{4}$/;
+    /*var ssn = document.getElementById("pattern").value;
+    var pattern = /^\d{3}-\d{2}-\d{4}$/;
+    if (ssn.match(pattern))
+        return true;
+    else
+        return false;*/
 
 /**
  * Returns the password validator regex.
@@ -116,8 +134,13 @@ function getRegexForSSN() {
  *   'Pa55'.match(validator) => false
  */
 function getPasswordValidator(minLength) {
-   throw new Error('Not implemented');
+    return new RegExp("^(?=(.*[0-9]))(?=(.*[A-Z]))(?=(.*[a-z]))[A-Za-z0-9]{" + minLength + "}");
+  //  return  /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/
 }
+    // /^[A-Za-z0-9!@#$%^&*()_]{6,20}$/;
+   // /^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})$/;
+    // /^[a-zA-Z0-9]{6}$/;
+
 
 
 module.exports = {

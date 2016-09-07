@@ -23,7 +23,7 @@
  *  'Go to the store and buy some more, 99 bottles of beer on the wall.'
  *
  * See the full text at
- * http://99-bottles-of-beer.net/lyrics.html
+ *
  *
  * NOTE: Please try to complete this task faster then original song finished:
  * https://www.youtube.com/watch?v=Z7bmyjxJuVY   :)
@@ -33,7 +33,21 @@
  *
  */
 function* get99BottlesOfBeer() {
-    throw new Error('Not implemented');
+    var bot=99;
+    var f1=function(n) {return `${n} bottles of beer on the wall, ${n} bottles of beer.`;};
+    var f2=function(n) {return `Take one down and pass it around, ${n} bottles of beer on the wall.`;};
+var fn=f1;
+while(bot>1){
+    yield fn(bot);
+    if(fn == f1){
+        fn=f2;bot--;
+    }else fn=f1;
+}
+yield 'Take one down and pass it around, 1 bottle of beer on the wall.';
+    yield '1 bottle of beer on the wall, 1 bottle of beer.';
+    yield 'Take one down and pass it around, no more bottles of beer on the wall.';
+    yield 'No more bottles of beer on the wall, no more bottles of beer.';
+yield 'Go to the store and buy some more, 99 bottles of beer on the wall.'
 }
 
 
@@ -47,7 +61,13 @@ function* get99BottlesOfBeer() {
  *
  */
 function* getFibonacciSequence() {
-    throw new Error('Not implemented');
+    var n0=0,n1=1;
+    while (true){
+        var p=n0;
+        n0=n1;
+        n1=p+n0;
+        yield p;
+    }
 }
 
 

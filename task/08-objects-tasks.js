@@ -23,7 +23,7 @@
  *    console.log(r.getArea());   // => 200
  */
 function Rectangle(width, height) {
-    throw new Error('Not implemented');
+    return {width:width, height:height, getArea:function(){return this.width*this.height}};
 }
 
 
@@ -38,7 +38,7 @@ function Rectangle(width, height) {
  *    { width: 10, height : 20 } => '{"height":10,"width":20}'
  */
 function getJSON(obj) {
-    throw new Error('Not implemented');
+    return JSON.stringify(obj);
 }
 
 
@@ -54,9 +54,28 @@ function getJSON(obj) {
  *
  */
 function fromJSON(proto, json) {
-    throw new Error('Not implemented');
+    var jsonObject = JSON.parse(json);
+    var nObject=Object.create(proto);
+    for (var field in proto.prototype){
+        nObject[field]=proto[field];
+        console.log("proto field:" + field);
+    }
+    for (var field in jsonObject){
+        nObject[field]=jsonObject[field];
+    }
+    return nObject;
 }
-
+/*
+ var jsonObject = JSON.parse(json);
+ var newObject = new Object();
+ newObject.prototype = proto;
+ for(var field in proto){
+ console.log(field);
+ if(jsonObject[field]){
+ newObject[field] = jsonObject[field];
+ }}
+ return newObject;
+*/
 
 /**
  * Css selectors builder

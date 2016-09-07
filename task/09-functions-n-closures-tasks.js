@@ -26,7 +26,9 @@
  *
  */
 function getComposition(f,g) {
-    throw new Error('Not implemented');
+    return function(x) {
+        return f(g(x));
+    }
 }
 
 
@@ -47,7 +49,9 @@ function getComposition(f,g) {
  *
  */
 function getPowerFunction(exponent) {
-    throw new Error('Not implemented');
+    return function(x){
+        return Math.pow(x,exponent);
+    }
 }
 
 
@@ -134,6 +138,17 @@ function retry(func, attempts) {
 function logger(func, logFunc) {
     throw new Error('Not implemented');
 }
+/*   return function () {
+       var fs=func.name + '(';
+       for(var argument in arguments)
+           fs+= JSON.stringify(arguments[arguments])+ (arguments< arguments.length-1? "," : "");
+       fs +=')';
+       logFunc(fs+" starts");
+       var value=func.apply(undefined,arguments);
+       logFunc(fs+" ends");
+       return value;
+   }*/
+
 
 
 /**
