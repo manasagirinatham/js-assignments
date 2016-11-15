@@ -204,7 +204,42 @@ function extractEmails(str) {
  *
  */
 function getRectangleString(width, height) {
-   var width=3,height=2;
+    var st="";
+    for(var i=1;i<=height;i++)
+    {
+        for(var j=1;j<=width;j++)
+        {
+            if(i==1){
+                if(j==1)
+                    st+="┌";
+                else if(j==width)
+                    st+="┐\n";
+                else
+                    st+="─";
+            }
+            else if(i==height){
+                if(j==1)
+                    st+="└";
+                else if(j==width)
+                    st+="┘\n";
+                else
+                    st+="─";
+            }
+            else if(j==1){
+                if(i!=1 && i!=height)
+                    st+="│";
+            }
+            else if(j==width){
+                if(i!=1 && i!=height)
+                    st+="│\n";
+            }
+            else if(i>1 && i<height && j>1 && j<width){
+                st+=" ";
+            }
+        }
+    }
+    return st;
+   /*var width=3,height=2;
     var res='';
    for (var i = 0; i < height; i++)
     {
@@ -216,7 +251,7 @@ function getRectangleString(width, height) {
         }
         res+='\n';
     }
-    console.log(res);
+    console.log(res);*/
 
     /*var a="";
     for(var i=0;i<height;i++)
